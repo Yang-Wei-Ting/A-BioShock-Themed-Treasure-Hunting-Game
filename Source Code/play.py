@@ -47,7 +47,7 @@ while True:
 
     # On day 6 and afterwards, executing the bad guy's actions and checking the player's health.
     elif today >= 6:
-        if today >= 10 and today % 2 == 0:
+        if today >= 10 and today % 2.5 == 0:
             bad_guy.weapon_upgrade()
             print("".join([RED, random.choice(messages.weapon_upgrade_msg_tuple)]))
 

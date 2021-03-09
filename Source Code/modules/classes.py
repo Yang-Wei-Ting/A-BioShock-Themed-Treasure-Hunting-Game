@@ -1,4 +1,5 @@
-import math, random
+import math
+import random
 from . import gui, cipher
 
 
@@ -61,7 +62,7 @@ class BadGuy(GameObject):
     def weapon_upgrade(self):
         "Upgrades self's weapon."
         self.weapon_range += 0.4
-        self.weapon_damage += 0.5
+        self.weapon_damage += 0.25
 
 
 class Item(GameObject):
