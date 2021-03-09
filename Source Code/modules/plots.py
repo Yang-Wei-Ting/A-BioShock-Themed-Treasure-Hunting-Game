@@ -1,32 +1,21 @@
 from textwrap import dedent
 from .cipher import decrypt
+from .layouts import (
+    YELLOW,
+    RED,
+    CYAN,
+    END_COLOR,
+    CLEAR_SCREEN,
+    decor,
+    print_decor,
+    print_input,
+)
 
 
-# Layouts
-def decor():
-    print("-" * 79)
-
-
-def print_decor(*args):
-    print(*args)
-    decor()
-
-
-def print_input(*args):
-    print(*args)
-    input()
-
-
-YOU_SPEAK = "You:        "
-
-
-# Plots
 def intro():
-    decor()
     skip_intro_ans = input("Skip intro? (y/n) ")
     if skip_intro_ans != "y":
-        print_decor()
-        print_input("Winter 1959, somewhere on the Atlantic ocean.")
+        print_input(f"{CLEAR_SCREEN}Winter 1959, somewhere on the Atlantic ocean.")
         print_input("Gentleman:   Are you going to just sit there again?")
         print_input("Lady:        Yep, as I don't have any interest in rowing.")
         print_input("You groaned as you regained consciousness.")
@@ -69,14 +58,13 @@ def intro():
         print_input("You:         But how do I...")
         print_input("You turned around, but they were gone.")
         print_input("You:         Wha...?")
-        print("You:         Guess I am on my own now.")
-    print()
-    decor()
+        print_input("You:         Guess I am on my own now.")
+    print(CLEAR_SCREEN, end="")
 
 
 def bad_guy_is_coming():
-    print(dedent('''\
-        A bad guy from the far north is coming to look for the treasure.
+    print(dedent(f'''\
+        {RED}A bad guy from the far north is coming to look for the treasure.
         Do not let him have his way.
         By the way, if I were you, I would stay away from him.
         Why? Because he's armed to the teeth and he looks unhappy...\n\
@@ -84,7 +72,8 @@ def bad_guy_is_coming():
 
 
 def ending():
-    print_decor("Congratulations! You found it!")
+    print_input(f"{CLEAR_SCREEN}{CYAN}Congratulations! You found it!")
+    print(CLEAR_SCREEN)
     print_input(decrypt("Lqvlgh wkh wuhdvxuh fkhvw lv d nhb dqg d slhfh ri sdshu, zklfk uhdgv:"))
     print_input(dedent(f'''\
          ----------------------------------------------------------------
@@ -93,10 +82,10 @@ def ending():
         │                                                              │
         │ {decrypt("Wkhuh'v d oljkwkrxvh")} at 63° 2' N, 29° 55' W.                 │
         │                                                              │
-        │ {decrypt("Zrxog brx nlqgob eulqj wkh nhb zlwk brx dqg jr wkhuh?")}        │
+        │ {YELLOW}{decrypt("Zrxog brx nlqgob")}{END_COLOR} {decrypt("eulqj wkh nhb zlwk brx dqg jr wkhuh?")}        │
         │                                                              │
         │ {decrypt("Zh vkdoo phhw djdlq vrrq.")}                                    │
-        │                                                        {decrypt("U. O.")} │
+        │                                                        {YELLOW}{decrypt("U. O.")}{END_COLOR} │
          ----------------------------------------------------------------\
     '''))
     print_input(dedent(decrypt('''\
@@ -105,11 +94,10 @@ def ending():
         FDQQRW FRQWURO BRXUVHOI!\
     ''')))
     print_input(decrypt("Wkhuhiruh, d qhz mrxuqhb ehjlqv..."))
-    print(dedent('''\
+    print_decor(dedent(f'''\
         That's the ending for Part I.\n
-        YOU WON!\
+        {CYAN}YOU WON!\
     '''))
-    decor()
     input(dedent(decrypt('''\
         Qrz, suhvv hqwhu wr vkrz vsrlohuv iru ElrVkrfn, wkh ylghr jdph iudqfklvh,
         wkdw wkh sorw ri wklv vpdoo jdph wrrn vrph uhihuhqfhv iurp.
@@ -152,4 +140,4 @@ def ending():
 
         Brx fdq xvh "Oljkw" dqg "Krxvh" wr orfdwh wkh wuhdvxuh lq wklv jdph.
     ''')))
-    print("That's it. Hope you enjoy my crazy creation. Thanks for playing!\n")
+    print(f"{YELLOW}That's it. Hope you enjoy my crazy creation. Thanks for playing!\n")
