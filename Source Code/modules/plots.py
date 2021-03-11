@@ -6,8 +6,6 @@ from .layouts import (
     CYAN,
     END_COLOR,
     CLEAR_SCREEN,
-    decor,
-    print_decor,
     print_input,
 )
 
@@ -67,14 +65,13 @@ def bad_guy_is_coming():
         {RED}A bad guy from the far north is coming to look for the treasure.
         Do not let him have his way.
         By the way, if I were you, I would stay away from him.
-        Why? Because he's armed to the teeth and he looks unhappy...\n\
+        Why? Because he's armed to the teeth and he looks unhappy...
     '''))
 
 
 def ending():
     print_input(f"{CLEAR_SCREEN}{CYAN}Congratulations! You found it!")
-    print(CLEAR_SCREEN)
-    print_input(decrypt("Lqvlgh wkh wuhdvxuh fkhvw lv d nhb dqg d slhfh ri sdshu, zklfk uhdgv:"))
+    print_input(decrypt("\033[2MLqvlgh wkh wuhdvxuh fkhvw lv d nhb dqg d slhfh ri sdshu, zklfk uhdgv:"))
     print_input(dedent(f'''\
          ----------------------------------------------------------------
         │                                                              │
@@ -85,59 +82,45 @@ def ending():
         │ {YELLOW}{decrypt("Zrxog brx nlqgob")}{END_COLOR} {decrypt("eulqj wkh nhb zlwk brx dqg jr wkhuh?")}        │
         │                                                              │
         │ {decrypt("Zh vkdoo phhw djdlq vrrq.")}                                    │
-        │                                                        {YELLOW}{decrypt("U. O.")}{END_COLOR} │
+        │                                                    {YELLOW}{decrypt("U. Oxwhfh")}{END_COLOR} │
          ----------------------------------------------------------------\
     '''))
     print_input(dedent(decrypt('''\
-        Vxgghqob brx vwduw wr iroorz wkh gluhfwlrq, dv li vrph vxshuqdwxudo irufh
-        pdgh brx gr vr. Brx zdqw wr vwrs exw wkhq brx uhdolch wkdw qrz brx
+        Vxgghqob brx vwduw wr iroorz wkh gluhfwlrq, dv li vrph vxshuqdwxudo irufh\n
+        pdgh brx gr vr. Brx zdqw wr vwrs exw wkhq brx uhdolch wkdw qrz brx\n
         FDQQRW FRQWURO BRXUVHOI!\
     ''')))
     print_input(decrypt("Wkhuhiruh, d qhz mrxuqhb ehjlqv..."))
-    print_decor(dedent(f'''\
-        That's the ending for Part I.\n
-        {CYAN}YOU WON!\
-    '''))
-    input(dedent(decrypt('''\
-        Qrz, suhvv hqwhu wr vkrz vsrlohuv iru ElrVkrfn, wkh ylghr jdph iudqfklvh,
-        wkdw wkh sorw ri wklv vpdoo jdph wrrn vrph uhihuhqfhv iurp.
-
-        (Wkh iroorzlqj sdudjudskv frqwdlq kxjh vsrlohuv iru ElrVkrfn 1, plog
-        vsrlohuv iru ElrVkrfn Lqilqlwh, qr vsrlohuv iru ElrVkrfn 2)
+    print_input("That's the ending for Part I.")
+    print_input(f"{CYAN}YOU WON!")
+    print_input(dedent(decrypt('''\
+        \033[2MQrz, suhvv hqwhu wr vkrz vsrlohuv iru ElrVkrfn, wkh ylghr jdph iudqfklvh,\n
+        wkdw wkh sorw ri wklv vpdoo jdph wrrn vrph uhihuhqfhv iurp.\n
+        \033[1;33pZduqlqj! Wkh iroorzlqj sdudjudskv frqwdlq kxjh vsrlohuv iru ElrVkrfn 1 dqg\n
+        plog vsrlohuv iru ElrVkrfn Lqilqlwh.\
     ''')))
-    decor()
-    input(dedent(decrypt('''\
-        { Zrxog Brx Nlqgob? }
-
-        Lq ElrVkrfn 1, Mdfn, wkh surwdjrqlvw, zdv jhqhwlfdoob prglilhg eb Bl Vxfkrqj
-        wkdw kh zrxog rehb hyhub rughu frqwdlqlqj wkh skudvh "zrxog brx nlqgob?".
+    print_input(dedent(decrypt('''\
+        \033[2M\033[1;33pZrxog Brx Nlqgob?\033[0p\n
+        Lq ElrVkrfn 1, Mdfn, wkh surwdjrqlvw, zdv jhqhwlfdoob prglilhg eb Bl Vxfkrqj\n
+        wkdw kh zrxog rehb hyhub rughu frqwdlqlqj wkh skudvh "zrxog brx nlqgob?".\
     ''')))
-    decor()
-    input(dedent(decrypt('''\
-        { Errnhu Fdwfk! }
-
-        Lq ElrVkrfn Lqilqlwh, zkhq brx, Errnhu Ghzlww, uxq rxw ri dppr ru duh derxw wr
-        glh, Holcdehwk, brxu ehvw vlghnlfn, riwhq wkurzv hlwkhu d phglfdo nlw, d vdow
-        erwwoh, ru vrph dppr wr brx dqg bhoov "Errnhu fdwfk!".
-
-        Brx fdq lqsxw "Errnhu" dqg "Fdwfk!" wr khdo brxuvhoi lq wklv jdph.
+    print_input(dedent(decrypt('''\
+        \033[2M\033[1;33pErrnhu Fdwfk!\033[0p\n
+        Lq ElrVkrfn Lqilqlwh, zkhq brx, Errnhu Ghzlww, uxq rxw ri dppr ru duh derxw wr\n
+        glh, Holcdehwk, brxu ehvw vlghnlfn, riwhq wkurzv hlwkhu d phglfdo nlw, d vdow\n
+        erwwoh, ru vrph dppr wr brx dqg bhoov "Errnhu fdwfk!".\n\n
+        Brx fdq lqsxw \033[1;36pErrnhu\033[0p dqg \033[1;36pFdwfk!\033[0p wr \033[1;36pkhdo brxuvhoi\033[0p lq wklv jdph.\
     ''')))
-    decor()
-    input(dedent(decrypt('''\
-        { Whduv }
-
-        Lq ElrVkrfn Lqilqlwh, Holcdehwk fdq rshq whduv, sruwdov wkurxjk wlph dqg vsdfh.
-
-        Brx fdq xvh "D" dqg "Whdu!" wr uhvhw wlph wr gdb 1 lq wklv jdph.
+    print_input(dedent(decrypt('''\
+        \033[2M\033[1;33pWhduv\033[0p\n
+        Lq ElrVkrfn Lqilqlwh, Holcdehwk fdq rshq whduv, sruwdov wkurxjk wlph dqg vsdfh.\n\n
+        Brx fdq xvh \033[1;36pD\033[0p dqg \033[1;36pWhdu!\033[0p wr \033[1;36puhvhw wlph wr gdb 1\033[0p lq wklv jdph.\
     ''')))
-    decor()
-    print_decor(dedent(decrypt('''\
-        { Oljkwkrxvhv }
-
-        Oljkwkrxvhv lq ElrVkrfn vhuyh dv grruv wr rwkhu uhdolwlhv.
-        "Wkhuh'v dozdbv d oljkwkrxvh, wkhuh'v dozdbv d pdq, dqg wkhuh'v dozdbv d flwb."
-                               - Holcdehwk gxulqj Wkh Vhd ri Grruv lq ElrVkrfn Lqilqlwh
-
-        Brx fdq xvh "Oljkw" dqg "Krxvh" wr orfdwh wkh wuhdvxuh lq wklv jdph.
+    print_input(dedent(decrypt('''\
+        \033[2M\033[1;33pOljkwkrxvhv\033[0p\n
+        Oljkwkrxvhv lq ElrVkrfn vhuyh dv grruv wr rwkhu uhdolwlhv.\n
+        Wkhuh'v dozdbv d oljkwkrxvh, wkhuh'v dozdbv d pdq, dqg wkhuh'v dozdbv d flwb.\n
+                             - Holcdehwk gxulqj Wkh Vhd ri Grruv lq ElrVkrfn Lqilqlwh\n\n
+        Brx fdq xvh \033[1;36pOljkw\033[0p dqg \033[1;36pKrxvh\033[0p wr \033[1;36porfdwh wkh wuhdvxuh\033[0p lq wklv jdph.\
     ''')))
-    print(f"{YELLOW}That's it. Hope you enjoy my crazy creation. Thanks for playing!\n")
+    print(f"{CLEAR_SCREEN}That's it.\n\nHope you enjoy my crazy creation.\n\nThanks for playing!\n")
